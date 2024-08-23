@@ -1,14 +1,13 @@
 name: deploy to lambda
 on: [push]
 jobs:
-
   deploy_zip:
     name: deploy lambda function
     runs-on: ubuntu-latest
     steps:
       - name: checkout source code
         uses: actions/checkout@v1
-      - name: Generate Zip
+      - name: Generate ZIP
         run: |
           zip deployment.zip *.mjs
       - name: default deploy
