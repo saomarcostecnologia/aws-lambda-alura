@@ -4,10 +4,10 @@ import { S3 } from '@aws-sdk/client-s3';
 const s3Client = new S3({region: 'sa-east-1'});
 
 export const handler = async (event, context, callback) => {
-    const record = event.record[0];
+    const record = event.Records[0];
     const Bucket = record.s3.bucket.name;
     const Key = record.s3.object.key;
-    const getObjectResult =  s3Client.getObject({
+    const getObjectResult = await s3Client.getObject({
         Bucket,
         Key,
     }).then( getObjectResult => {
